@@ -1,0 +1,7 @@
+*.tar
+*.tar.gz
+*.exe
+*.vhdx
+ArchExperience
+out
+.docker_temp*

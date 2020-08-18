@@ -22,11 +22,11 @@ Run `ArchExperience.exe` twice for post-installation procedure
 
 ![](https://i.imgur.com/rKn3fno.png)
 
-After this, you may enjoy your ArchExperience from Windows Terminal
+After this, start your ArchExperience instance through Windows Terminal
 
 # Post-Installation
 
-`genie` is shipped with this distro, therefore, if you want to utilise `systemd`, which is one of the core component of one's Arch Linux experience, just issue `genie -s`
+`genie` is shipped with this distro, therefore, if you want to utilise `systemd`, just issue `genie -s`
 
 ```
 genie -s
@@ -56,4 +56,4 @@ wsl -t ArchExperience || wsl --shutdown
 
 # Special thanks
 
-This method would not be made possible without the elegant work of `yuk7` and `arkane-system`. Your works are really appreciated
+This method would not be made possible without the elegant work of `yuk7` and `arkane-system`. Your works are really appreciated.

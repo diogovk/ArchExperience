@@ -16,7 +16,7 @@ done
 
 echo
 echo "[*] Installing Arch Linux system packages"
-pacman -Syu --needed --noconfirm base base-devel dotnet-runtime || exit $?
+pacman -Syyu --needed --noconfirm base base-devel dotnet-runtime || exit $?
 
 echo
 echo "[*] Changing password for root"
@@ -29,7 +29,7 @@ groupdel -f docker || ( code=$?; [[ $code != '6' ]] && exit $code )
 useradd -m -u 1000 -G wheel $wsl_username || exit $?
 
 echo
-echo "%wheel ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/99-allow-wheels
+echo "%wheel ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/allow-wheels-nopasswd
 echo "[*] Changing password for $wsl_username"
 passwd $wsl_username || exit $?
 

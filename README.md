@@ -38,6 +38,12 @@ If you use Windows Terminal, you might want to add the following line to ArchExp
 "commandline": "wsl -d ArchExperience genie -s",
 ```
 
+To set the regular user you've created as the default user (by default, the default user is `root`), issue this at the location where you installed this distro
+
+```
+./ArchExperience config --default-uid 1000
+```
+
 Do not attempt to execute any power management command, or try to terminate your `systemd` bottle with `genie -u`, since it may cause kernel issues. Always use `wsl -t` or `wsl --shutdown` if you have to.
 
 ```

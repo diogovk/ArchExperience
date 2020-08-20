@@ -1,11 +1,12 @@
-#! /bin/bash
+#!/bin/bash
+pushd /root > /dev/null
 
 distro_name="ArchExperience"
 
 echo
 echo "[*] Executing $distro_name post-installation procedure"
-echo
 
+echo
 echo "[*] Before we start you need to edit the mirrorlist"
 echo "[*] Select your preferred editor to continue (default: vim)"
 select editor in "vim" "nano"; do
@@ -16,7 +17,7 @@ done
 
 echo
 echo "[*] Installing Arch Linux system packages"
-pacman -Syyu --needed --noconfirm base base-devel dotnet-runtime || exit $?
+pacman -Syu --needed --noconfirm base base-devel || exit $?
 
 echo
 echo "[*] Changing password for root"
@@ -25,7 +26,7 @@ passwd || exit $?
 echo
 echo "[*] Creating new regular user with UID 1000"
 read -p "New username: " -r wsl_username
-groupdel -f docker || ( code=$?; [[ $code != '6' ]] && exit $code )
+groupdel -f docker
 useradd -m -u 1000 -G wheel $wsl_username || exit $?
 
 echo
@@ -40,4 +41,4 @@ mv -f .bashrc~ .bashrc || exit $?
 rm -f post-install.sh || exit $?
 
 echo
-source .bashrc
+popd > /dev/null

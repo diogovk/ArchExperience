@@ -17,7 +17,9 @@ done
 
 echo
 echo "[*] Installing Arch Linux system packages"
-pacman -Syu --needed --noconfirm base base-devel || exit $?
+pacman-key --init || exit $?
+pacman-key --populate archlinux || exit $?
+pacman -Syu --color=auto --noconfirm base base-devel || exit $?
 
 echo
 echo "[*] Changing password for root"

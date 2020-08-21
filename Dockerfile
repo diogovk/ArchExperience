@@ -11,7 +11,8 @@ RUN ar x systemd-genie.deb data.tar.xz && mkdir -p systemd-genie && tar xpf data
 FROM archlinux:latest
 
 WORKDIR /etc/pacman.d
-RUN echo 'Server = https://mirrors.tuna.tsinghua.edu.cn/archlinux/$repo/os/$arch' > mirrorlist && \
+RUN \
+# echo 'Server = https://mirrors.tuna.tsinghua.edu.cn/archlinux/$repo/os/$arch' > mirrorlist && \
 pacman -Sy --noconfirm --needed vim nano dotnet-runtime && pacman -Scc --noconfirm && \
 rm -f /var/lib/pacman/sync/{core,extra,community}.db && cp -f mirrorlist.pacnew mirrorlist
 

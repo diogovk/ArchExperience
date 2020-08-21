@@ -27,4 +27,4 @@ curl -L https://www.archlinux.org/static/favicon.ico -o $distro_name/arch.ico ||
 
 echo
 echo -n "[*] Packaging for publish... "
-tar -cf out/$distro_name-release.tar $distro_name && echo "done!" || exit $?
+tar -cf out/$distro_name-release-$(date +%Y%m%d).tar $distro_name && echo "done!" || exit $?

@@ -29,7 +29,7 @@ echo
 echo "[*] Creating new regular user with UID 1000"
 read -p "New username: " -r wsl_username
 groupdel -f docker
-useradd -m -u 1000 -G wheel $wsl_username || exit $?
+useradd -m -u 1000 -G wheel -s /bin/zsh $wsl_username || exit $?
 
 echo
 echo "%wheel ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/allow-wheels-nopasswd
@@ -39,8 +39,7 @@ passwd $wsl_username || exit $?
 groupadd docker || exit $?
 usermod -aG docker $wsl_username || exit $?
 
-mv -f .bashrc~ .bashrc || exit $?
-rm -f post-install.sh || exit $?
+rm -f .zshrc post-install.sh || exit $?
 
 echo
 popd > /dev/null

@@ -13,7 +13,7 @@ FROM archlinux:latest
 WORKDIR /etc/pacman.d
 RUN \
 # echo 'Server = https://mirrors.tuna.tsinghua.edu.cn/archlinux/$repo/os/$arch' > mirrorlist && \
-pacman -Sy --noconfirm --needed vim nano dotnet-runtime && pacman -Scc --noconfirm && \
+pacman -Sy --noconfirm --needed vim nano dotnet-runtime zsh grml-zsh-config && \
 rm -f /var/lib/pacman/sync/* /var/cache/pacman/pkg/* && cp -f mirrorlist.pacnew mirrorlist
 
 COPY --from=builder /usr/local/sbin/daemonize /usr/local/sbin/daemonize
@@ -28,5 +28,4 @@ WORKDIR /usr/bin
 RUN ln -sf vim vi
 
 WORKDIR /root
-RUN cp -f /etc/skel/.bash* . && cp .bashrc .bashrc~ && \
-echo "source /root/post-install.sh" >> .bashrc
+RUN usermod -s /bin/zsh root && echo "bash -c 'source /root/post-install.sh'" >> .zshrc
